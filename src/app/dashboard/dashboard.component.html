@@ -1,0 +1,26 @@
+<nav class="nav col-6 mb-3">
+  <a routerLink="/history" routerLinkActive="active">View History</a>
+</nav>
+
+<div class="form-group">
+    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search"/>
+    <button class="btn btn-success" style="margin-top: 10px" (click)="search()">Search</button>
+</div>
+
+<div style="color: salmon;margin-top: 60px" *ngIf="wSearchRecords">
+  <h3>
+    Wikipedia Result(s) : {{ wSearchRecords.length }} result(s)
+  </h3>
+  <ul class="list-group" >
+    <li class="list-group-item" *ngFor="let wikiSearchResult of wSearchRecords">{{wikiSearchResult}}</li>
+  </ul>
+</div>
+
+<div style="color:sandybrown;margin-top: 50px" *ngIf="gSearchRecords">
+  <h3>
+    Giphy Result(s) : {{ gSearchRecords.length }} result(s)
+  </h3>
+  <ul class="list-group" >
+    <li *ngFor="let imageUrl of gSearchRecords" style="margin: 5px"><img src="{{ imageUrl }}"></li>
+  </ul>
+</div>

@@ -1,0 +1,28 @@
+<nav class="nav col-6 mb-3">
+  <a routerLink="/dashboard" routerLinkActive="Home">Back To Home</a>
+</nav>
+
+<div *ngIf="searchRecords && searchRecords.length>0; then showHistory; else noHistory">
+</div>
+
+<ng-template #showHistory>
+  <div class="col-6 p-0 interval">
+    <h5>Search History</h5>
+    <table class="table">
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col">Keywords</th>
+      </tr>
+      <tr *ngFor="let searchItem of searchRecords">
+        <td>{{searchItem.timestamp}}</td>
+        <td>{{searchItem.searchText}}</td>
+      </tr>
+    </table>
+  </div>
+</ng-template>
+
+<ng-template #noHistory>
+  <h4 class="alert alert-danger">
+    No History
+  </h4>
+</ng-template>
